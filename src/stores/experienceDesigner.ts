@@ -132,7 +132,7 @@ export const useExperienceDesignerStore = defineStore('experienceDesignerStore',
     }
 
     // Keep the version in sync with the one in package.json
-    const mersiveVersion = '0.11.4'
+    const mersiveVersion = '1.0.0'
 
     const experienceNameInitialValue = 'Untitled Experience'
     const experienceName = ref(experienceNameInitialValue)
