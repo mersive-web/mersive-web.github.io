@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quando&display=swap');
+
+/* TODO: implement a design system */
+/* TODO: improve naming of the colors */
+/* TODO: add vars for transitions, sizes, margin, padding, ... */
+:root {
+    --mersive-c-black: #1e1d21;
+    --mersive-c-black-op-80: rgb(30 29 33 / 80%);
+    --mersive-c-black-op-40: rgb(30 29 33 / 40%);
+    --mersive-c-black-soft: #161618;
+    --mersive-c-black-mute: #151515;
+
+    --mersive-c-grey: #2e2e30;
+    --mersive-c-grey-dark: #161616;
+    --mersive-c-grey-darker: #0c0c0c;
+    --mersive-c-grey-light: #424242;
+
+    --mersive-c-white: #ffffff;
+    --mersive-c-white-soft: #e1e1e1;
+    --mersive-c-white-softer: #c9c9c9;
+    --mersive-c-white-mute: #8e8e90;
+
+    --mersive-c-red: #d00e0e;
+
+    --mersive-c-blue: #0e9fd0;
+    --mersive-c-blue-dark: #1788c0;
+    --mersive-c-blue-darker: #1d6081;
+}
+
+:root {
+    --color-background: var(--mersive-c-black);
+    --color-accent: var(--mersive-c-blue-dark);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    font-weight: normal;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family:
+        'Inter',
+        -apple-system,
+        BlinkMacSystemFont,
+        'Segoe UI',
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        'Fira Sans',
+        'Droid Sans',
+        'Helvetica Neue',
+        sans-serif;
+    font-size: 16px;
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+    border: none;
+    padding: 0;
+    outline: none;
+
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+input {
+    outline: none;
+}
+
+::selection {
+    background-color: var(--mersive-c-blue-dark);
+    color: var(--mersive-c-white)
+}
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* TODO: make the input type range a component and place these rules there. */
+/*
+ * Thanks to https://range-input-css.netlify.app/
+*/
+/*********** Baseline, reset styles ***********/
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+input[type="range"]:focus {
+    outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+    background-color: var(--mersive-c-grey-dark);
+    border-radius: 10px;
+    height: 12px;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    /* Override default look */
+    appearance: none;
+    margin-top: -4px;
+    /* Centers thumb on the track */
+    background-color: var(--mersive-c-white);
+    border-radius: 20px;
+    height: 20px;
+    width: 20px;
+}
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    outline: none;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+    background-color: var(--mersive-c-grey-dark);
+    border-radius: 10px;
+    height: 12px;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+    background-color: var(--mersive-c-white);
+    border: none;
+    /*Removes extra border that FF applies*/
+    border-radius: 20px;
+    height: 20px;
+    width: 20px;
+}
+
+input[type="range"]:focus::-moz-range-thumb {
+    outline: none;
+}
+
+a {
+    color: inherit;
+    font-weight: 600;
+}
