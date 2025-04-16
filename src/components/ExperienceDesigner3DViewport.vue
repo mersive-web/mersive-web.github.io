@@ -1360,6 +1360,9 @@ function handleLightAddedToSceneEvents(): void {
 // TODO: fix duplicate shadows generators when adding meshes or lights
 function createShadowsGenerator(light: IShadowLight): void {
     const shadowsGenerator = new ShadowGenerator(1024, light)
+    shadowsGenerator.usePercentageCloserFiltering = true
+    shadowsGenerator.filteringQuality = 1
+    shadowsGenerator.transparencyShadow = true
     shadowsGeneratorsBuffer[light.id] = shadowsGenerator
 }
 
