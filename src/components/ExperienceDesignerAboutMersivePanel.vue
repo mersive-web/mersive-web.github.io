@@ -7,6 +7,10 @@ function handleSeeAllCreditsButtonClick() {
     window.open('CREDITS.txt', '_blank')
 }
 
+function handleSeeGitHubRepoButtonClick() {
+    window.open('https://github.com/mersive-web/mersive-web.github.io', '_blank')
+}
+
 const emit = defineEmits(['closeButtonClicked'])
 </script>
 
@@ -37,6 +41,13 @@ const emit = defineEmits(['closeButtonClicked'])
                 @click="handleSeeAllCreditsButtonClick"
             >
                 See all credits
+            </button>
+            <button
+                class="about-mersive-panel-container__panel__button"
+                tabindex="-1"
+                @click="handleSeeGitHubRepoButtonClick"
+            >
+                See GitHub repo
             </button>
         </div>
     </div>
