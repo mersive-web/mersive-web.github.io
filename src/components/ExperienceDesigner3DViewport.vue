@@ -2259,6 +2259,10 @@ function handleEditorInputEvents(): void {
                 case 'areCollisionsEnabled':
                     ;(activeNode as Mesh).checkCollisions = inputValue as boolean
 
+                    for (const mesh of (activeNode as Mesh).getChildMeshes()) {
+                        mesh.checkCollisions = inputValue as boolean
+                    }
+
                     break
                 case 'canReceiveShadows':
                     ;(activeNode as Mesh).receiveShadows = inputValue as boolean
