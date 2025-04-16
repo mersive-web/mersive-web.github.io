@@ -1331,8 +1331,8 @@ function handleLightAddedToSceneEvents(): void {
 
             for (const mesh of scene.meshes) {
                 if (
-                    !systemMeshesIds.includes(mesh.id) &&
-                    !(mesh.parent !== null && systemMeshesIds.includes(mesh.parent.id))
+                    systemMeshesIds.includes(mesh.id) ||
+                    (mesh.parent !== null && systemMeshesIds.includes(mesh.parent.id))
                 ) {
                     continue
                 }
