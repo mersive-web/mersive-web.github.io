@@ -360,6 +360,7 @@ function handleElementsLibraryBuiltInElementButtonClickedEvents(): void {
 
         if (isNodeAMesh(newNode)) {
             ;(newNode as Mesh).material = defaultMaterial.clone(`${newNode.name} material`)
+            ;(newNode as Mesh).checkCollisions = true
         }
 
         if (isNodeMovable(newNode)) {
