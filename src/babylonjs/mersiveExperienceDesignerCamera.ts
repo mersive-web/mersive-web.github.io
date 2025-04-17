@@ -65,6 +65,7 @@ class MersiveExperienceDesignerCamera extends UniversalCamera {
         this.speed = this.getWalkingSpeed()
         this.inertia = this.defaultInertia
         this.angularSensibility = this.defaultAngularSensibility
+        this.minZ = 0.1
 
         this.applyGravity = false
         this.checkCollisions = false
