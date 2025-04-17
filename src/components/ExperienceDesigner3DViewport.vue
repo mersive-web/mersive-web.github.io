@@ -247,6 +247,7 @@ function setupEventHandlers(): void {
     handleCloseOrReloadBrowserTabRequestedEvents()
     handlePlayExperienceCommandExecutedEvents()
     handleElementsLibraryBuiltInElementButtonClickedEvents()
+    handleElementsLibraryElementButtonClickedEvents()
 }
 
 function placeMovableNodeAwayFromTheCamera(
@@ -371,6 +372,78 @@ function handleElementsLibraryBuiltInElementButtonClickedEvents(): void {
         }
 
         newNode.state = 'ELEMENT_ADDED_FROM_ELEMENTS_LIBRARY'
+    })
+}
+
+function handleElementsLibraryElementButtonClickedEvents(): void {
+    eventBus.on('elementsLibraryElementButtonClicked', (data) => {
+        const assetsManager = new AssetsManager(scene)
+        const meshTask = assetsManager.addMeshTask(
+            `${data.elementName} load task`,
+            '',
+            '',
+            data.element3DModelFilePath,
+        )
+
+        meshTask.onSuccess = (task) => {
+            const loadedMesh = task.loadedMeshes[0]
+
+            loadedMesh.setEnabled(false)
+            loadedMesh.name =
+                data.elementName.substring(0, data.elementName.lastIndexOf('.')) || data.elementName
+
+            loadedMesh.rotationQuaternion = null
+            ;(loadedMesh as Mesh).bakeCurrentTransformIntoVertices()
+            ;(loadedMesh as Mesh).refreshBoundingInfo()
+            createMeshMetadataWithNoTransformations(loadedMesh)
+            buildMeshHierarchyBoundingInfo(loadedMesh)
+            const loadedMeshBoundingBoxCenter = loadedMesh.getBoundingInfo().boundingBox.center
+            loadedMesh.setPivotMatrix(
+                Matrix.Translation(
+                    -loadedMeshBoundingBoxCenter.x,
+                    -loadedMeshBoundingBoxCenter.y,
+                    -loadedMeshBoundingBoxCenter.z,
+                ),
+                false,
+            )
+            loadedMesh.computeWorldMatrix(true)
+
+            const loadedMeshMaxDimension = getMeshMaxDimension(loadedMesh as Mesh)
+            const loadedMeshMaxDimensionLimit = 10
+            if (loadedMeshMaxDimension > loadedMeshMaxDimensionLimit) {
+                scaleMeshUniformlyToReachDesiredMaxDimension(
+                    loadedMesh as Mesh,
+                    loadedMeshMaxDimensionLimit,
+                    loadedMeshMaxDimension,
+                )
+            }
+
+            loadedMesh.position = Vector3.TransformCoordinates(
+                new Vector3(0, 0, 10 + loadedMeshMaxDimensionLimit),
+                experienceDesignerCamera.computeWorldMatrix().clone(),
+            )
+
+            loadedMesh.checkCollisions = true
+            for (const mesh of (loadedMesh as Mesh).getChildMeshes()) {
+                mesh.checkCollisions = true
+            }
+
+            loadedMesh.setEnabled(true)
+            setNodeAsActive(loadedMesh)
+        }
+
+        meshTask.onError = (task, message, exception) => {
+            console.error(exception)
+        }
+
+        assetsManager
+            .loadAsync()
+            .then(() => {
+                updateSceneNodesData()
+            })
+            .catch((reason) => {
+                console.log(reason)
+            })
     })
 }
 
