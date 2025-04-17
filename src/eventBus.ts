@@ -30,6 +30,11 @@ export type Events = {
     elementsLibraryBuiltInElementButtonClicked: {
         elementType: ElementType
     }
+    elementsLibraryElementButtonClicked: {
+        elementName: string
+        elementPreviewImageFilePath: string
+        element3DModelFilePath: string
+    }
     elementsLibraryCategoryChanged: {
         newCategory: ElementsLibraryCategory
     }
