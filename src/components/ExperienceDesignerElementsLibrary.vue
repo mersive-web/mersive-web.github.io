@@ -16,6 +16,11 @@ import architectureIcon from '@/assets/icons/architecture_400.svg'
 import furnituresIcon from '@/assets/icons/furniture_400.svg'
 import decorationsIcon from '@/assets/icons/star_400.svg'
 import natureIcon from '@/assets/icons/tree_400.svg'
+import ExperienceDesignerElementsLibraryElementButton from './ExperienceDesignerElementsLibraryElementButton.vue'
+import { elementsLibraryArchitectureCategory3DModelsInfos } from '@/elements_library_3d_models_categories_infos/architecture'
+import { elementsLibraryFurnituresCategory3DModelsInfos } from '@/elements_library_3d_models_categories_infos/furnitures'
+import { elementsLibraryDecorationsCategory3DModelsInfos } from '@/elements_library_3d_models_categories_infos/decorations'
+import { elementsLibraryNatureCategory3DModelsInfos } from '@/elements_library_3d_models_categories_infos/nature'
 
 const activeCategoryName = ref<ElementsLibraryCategory>('All categories')
 const categoriesBreadcrumbsLevels = ref([activeCategoryName.value])
@@ -186,17 +191,65 @@ provide(experienceDesignerElementsLibrarySearchQueryIK, elementsLibrarySearchQue
                     "
                 />
             </template>
-            <template v-if="activeCategoryName == 'Architecture'">
-                <p style="font-size: 0.8em">Coming soon</p>
+            <template
+                v-if="
+                    activeCategoryName == 'Architecture' ||
+                    (activeCategoryName == 'All categories' && elementsLibrarySearchQuery != '')
+                "
+            >
+                <ExperienceDesignerElementsLibraryElementButton
+                    v-for="(_3DModel, index) in elementsLibraryArchitectureCategory3DModelsInfos"
+                    :key="index"
+                    :element-name="_3DModel._3DModelName"
+                    :preview-image-file-path="_3DModel._3DModelPreviewImageFilePath"
+                    :model-file-path="_3DModel._3DModelFilePath"
+                    :model-page-url="_3DModel._3DModelPageUrl"
+                />
             </template>
-            <template v-if="activeCategoryName == 'Furnitures'">
-                <p style="font-size: 0.8em">Coming soon</p>
+            <template
+                v-if="
+                    activeCategoryName == 'Furnitures' ||
+                    (activeCategoryName == 'All categories' && elementsLibrarySearchQuery != '')
+                "
+            >
+                <ExperienceDesignerElementsLibraryElementButton
+                    v-for="(_3DModel, index) in elementsLibraryFurnituresCategory3DModelsInfos"
+                    :key="index"
+                    :element-name="_3DModel._3DModelName"
+                    :preview-image-file-path="_3DModel._3DModelPreviewImageFilePath"
+                    :model-file-path="_3DModel._3DModelFilePath"
+                    :model-page-url="_3DModel._3DModelPageUrl"
+                />
             </template>
-            <template v-if="activeCategoryName == 'Decorations'">
-                <p style="font-size: 0.8em">Coming soon</p>
+            <template
+                v-if="
+                    activeCategoryName == 'Decorations' ||
+                    (activeCategoryName == 'All categories' && elementsLibrarySearchQuery != '')
+                "
+            >
+                <ExperienceDesignerElementsLibraryElementButton
+                    v-for="(_3DModel, index) in elementsLibraryDecorationsCategory3DModelsInfos"
+                    :key="index"
+                    :element-name="_3DModel._3DModelName"
+                    :preview-image-file-path="_3DModel._3DModelPreviewImageFilePath"
+                    :model-file-path="_3DModel._3DModelFilePath"
+                    :model-page-url="_3DModel._3DModelPageUrl"
+                />
             </template>
-            <template v-if="activeCategoryName == 'Nature'">
-                <p style="font-size: 0.8em">Coming soon</p>
+            <template
+                v-if="
+                    activeCategoryName == 'Nature' ||
+                    (activeCategoryName == 'All categories' && elementsLibrarySearchQuery != '')
+                "
+            >
+                <ExperienceDesignerElementsLibraryElementButton
+                    v-for="(_3DModel, index) in elementsLibraryNatureCategory3DModelsInfos"
+                    :key="index"
+                    :element-name="_3DModel._3DModelName"
+                    :preview-image-file-path="_3DModel._3DModelPreviewImageFilePath"
+                    :model-file-path="_3DModel._3DModelFilePath"
+                    :model-page-url="_3DModel._3DModelPageUrl"
+                />
             </template>
         </div>
     </div>
