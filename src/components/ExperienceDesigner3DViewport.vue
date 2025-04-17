@@ -58,6 +58,7 @@ import {
     SpotLight,
 } from '@babylonjs/core'
 
+// DEBUG
 // import '@babylonjs/core/Debug/debugLayer'
 // import '@babylonjs/inspector'
 
@@ -1468,6 +1469,7 @@ function handleMaterialAddedToSceneEvents(): void {
     })
 }
 
+// DEBUG
 // function handleToggleBabylonJSDebuggerEvents(keyboardEvent: KeyboardEvent): void {
 //     if (keyboardEvent.ctrlKey && keyboardEvent.altKey && keyboardEvent.key.toLowerCase() == 'i') {
 //         if (scene.debugLayer.isVisible()) {
@@ -1788,7 +1790,7 @@ function handleKeyDownEvents(): void {
         //     console.log(activeNode)
         // }
 
-        // TODO: remove this from production build
+        // DEBUG
         // Ctrl+Alt+I
         // handleToggleBabylonJSDebuggerEvents(keyboardEvent)
 
