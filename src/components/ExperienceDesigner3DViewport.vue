@@ -983,6 +983,12 @@ async function process3DModelsFiles(files: File[]): Promise<void> {
                 }
 
                 previousComponentToTranslateMeshDimension = componentToTranslateMeshDimension
+
+                loadedMesh.checkCollisions = true
+                for (const mesh of (loadedMesh as Mesh).getChildMeshes()) {
+                    mesh.checkCollisions = true
+                }
+
                 loadedMesh.setEnabled(true)
             }
 
