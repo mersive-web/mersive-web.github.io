@@ -420,7 +420,7 @@ function handleElementsLibraryElementButtonClickedEvents(): void {
             }
 
             loadedMesh.position = Vector3.TransformCoordinates(
-                new Vector3(0, 0, 10 + loadedMeshMaxDimensionLimit),
+                new Vector3(0, 0, 1 + loadedMeshMaxDimension),
                 experienceDesignerCamera.computeWorldMatrix().clone(),
             )
 
