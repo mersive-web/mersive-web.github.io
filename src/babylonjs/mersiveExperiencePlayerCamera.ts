@@ -165,6 +165,7 @@ class MersiveExperiencePlayerCamera extends UniversalCamera {
         this.maxZ = 10_000
         this.applyGravity = true
         this.checkCollisions = true
+        this.needMoveForGravity = true
 
         this.setupEventHandlers()
     }

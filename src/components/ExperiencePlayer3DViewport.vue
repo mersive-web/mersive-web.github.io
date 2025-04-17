@@ -363,6 +363,8 @@ onMounted(() => {
         }
 
         void loadExperience(experienceToPlaySource, experienceToPlaySourceType, () => {
+            scene.gravity.set(0, -0.1, 0)
+
             engine.runRenderLoop(() => {
                 if (isExperiencePlayerCameraDisposed === false) {
                     scene.render()
