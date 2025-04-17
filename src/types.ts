@@ -173,3 +173,10 @@ export type ElementsLibraryCategory =
     | 'Furnitures'
     | 'Decorations'
     | 'Nature'
+
+export interface ElementsLibrary3DModel {
+    _3DModelName: string
+    _3DModelPreviewImageFilePath: string
+    _3DModelFilePath: string
+    _3DModelPageUrl: string
+}
