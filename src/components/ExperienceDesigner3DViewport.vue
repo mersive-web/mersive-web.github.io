@@ -1785,10 +1785,9 @@ function handleKeyDownEvents(): void {
             return
         }
 
-        // TODO: remove this from production build
-        // if (keyboardEvent.key.toLowerCase() == 'l') {
-        //     console.log(activeNode)
-        // }
+        if (keyboardEvent.key.toLowerCase() == 'l') {
+            console.log(activeNode)
+        }
 
         // DEBUG
         // Ctrl+Alt+I
