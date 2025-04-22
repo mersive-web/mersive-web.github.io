@@ -1,1 +1,5 @@
-TODO
+- Thanks to https://www.babylonjs.com for the spinner tail used in the loading screen
+- Thanks to https://www.blenderkit.com and https://www.cgtrader.com for the 3D models used in the Elements Library. For each model, you can click on the upper right info icon to open its official details page in another tab, to see who created it
+- Thanks to https://fonts.google.com for the icons used in the UI
+- Thanks to https://rsms.me/inter for the Inter font used in the UI
+- Thanks to https://polyhaven.com/a/autumn_field_puresky for the HDR texture used for the default skydome
